@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,9 @@ public class StudentAdapter extends ArrayAdapter<Student> {
 
         TextView name = (TextView) convertView.findViewById(R.id.student_list_template_name_id);
         name.setText(student.getId()+" "+student.getName());
+
+        Button addRecord = (Button) convertView.findViewById(R.id.student_list_template_button_id);
+        addRecord.setTag(student.getId()+"");
 
         return convertView;
     }
