@@ -14,9 +14,10 @@ public class AddRecord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
 
-        TextView data = (TextView) findViewById(R.id.add_record_data);
-        data.setText("Nope");
         //data.setText(((Student)getIntent().getParcelableExtra("student-id")).getName());
-        Log.d("Hello -> ", getIntent().getStringExtra("id"));
+        int id =  Integer.parseInt(getIntent().getStringExtra("id"));
+        Student student = DataHandler.studentDetails.get(id);
+
+
     }
 }

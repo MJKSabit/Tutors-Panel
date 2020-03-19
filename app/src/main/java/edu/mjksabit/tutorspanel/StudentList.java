@@ -21,6 +21,14 @@ public class StudentList extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void addNewStudent(View view) {
+        //
+    }
+
+    public void goBack(View view) {
+        super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         DataHandler.main(null);
