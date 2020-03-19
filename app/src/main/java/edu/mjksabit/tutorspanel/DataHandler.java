@@ -11,6 +11,8 @@ public class DataHandler {
 
     public static Map<Integer, Student> studentDetails = new HashMap<>();
 
+    public static ArrayList<Record> records;
+
     static {
         students.add(new Student(1, "Sifat"));
         students.add(new Student(2, "Sabit"));
@@ -23,6 +25,7 @@ public class DataHandler {
     }
 
     public static void main(String[] args) {
+        records = new ArrayList<>();
         for (Student stud : students) {
             studentDetails.put(stud.getId(), stud);
         }
