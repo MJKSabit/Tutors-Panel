@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class DataHandler {
 
-    private static int student_id;
+    private static int student_id = 0;
 
     public static ArrayList<Student> students = new ArrayList<>();
 
@@ -15,7 +15,7 @@ public class DataHandler {
     public static ArrayList<Record> records = new ArrayList<>();
 
     public static void addStudent(String studentName) {
-        student_id = records.size() + 1;
+        student_id++;
         Student student = new Student(student_id, studentName);
         students.add(student);
         studentDetails.put(student_id, student);

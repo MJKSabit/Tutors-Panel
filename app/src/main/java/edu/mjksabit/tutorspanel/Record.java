@@ -26,6 +26,6 @@ public class Record {
     @Override
     public String toString() {
         DateFormat dateFormat = new SimpleDateFormat();
-        return dateFormat.format(date)+" ("+DataHandler.studentDetails.get(studentId)+") "+details;
+        return dateFormat.format(date)+" ("+DataHandler.studentDetails.get(studentId).getName()+") "+details;
     }
 }

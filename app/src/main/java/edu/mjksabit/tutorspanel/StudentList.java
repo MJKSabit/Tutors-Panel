@@ -3,6 +3,7 @@ package edu.mjksabit.tutorspanel;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class StudentList extends AppCompatActivity {
+
+    private static ListView listView;
+    private static Context baseContext;
 
     public void plusOnclick(View view) {
 //        Log.d(view.getTag().toString(),  DataHandler.studentDetails.get((int) view.getTag()).getName());
@@ -27,23 +31,13 @@ public class StudentList extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == RESULT_OK) {
-            showList();
-        }
-    }
-
     public void goBack(View view) {
 
         super.onBackPressed();
     }
 
-    public void showList() {
-        ListView listView = (ListView) findViewById(R.id.student_list);
-        listView.setAdapter(new StudentAdapter(this.getBaseContext(), DataHandler.students));
+    public static void showList() {
+        listView.setAdapter(new StudentAdapter(baseContext, DataHandler.students));
     }
 
     @Override
@@ -51,6 +45,8 @@ public class StudentList extends AppCompatActivity {
         DataHandler.main(null);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
+        listView = (ListView) findViewById(R.id.student_list);
+        baseContext = this.getBaseContext();
         showList();
 
     }

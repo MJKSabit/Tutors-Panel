@@ -9,7 +9,6 @@ import android.widget.EditText;
 public class AddStudent extends AppCompatActivity {
 
     public void goBack(View view) {
-        setResult(RESULT_CANCELED);
         finish();
     }
 
@@ -19,7 +18,7 @@ public class AddStudent extends AppCompatActivity {
 
         DataHandler.addStudent(details.getText().toString());
 
-        setResult(RESULT_OK);
+        StudentList.showList();
         finish();
     }
 
