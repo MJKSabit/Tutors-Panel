@@ -1,5 +1,6 @@
 package edu.mjksabit.tutorspanel;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,11 +23,27 @@ public class StudentList extends AppCompatActivity {
     }
 
     public void addNewStudent(View view) {
-        //
+        Intent intent = new Intent(StudentList.this, AddStudent.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == RESULT_OK) {
+            showList();
+        }
     }
 
     public void goBack(View view) {
+
         super.onBackPressed();
+    }
+
+    public void showList() {
+        ListView listView = (ListView) findViewById(R.id.student_list);
+        listView.setAdapter(new StudentAdapter(this.getBaseContext(), DataHandler.students));
     }
 
     @Override
@@ -34,11 +51,7 @@ public class StudentList extends AppCompatActivity {
         DataHandler.main(null);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
-
-
-
-        ListView listView = (ListView) findViewById(R.id.student_list);
-        listView.setAdapter(new StudentAdapter(this.getBaseContext(), DataHandler.students));
+        showList();
 
     }
 }
