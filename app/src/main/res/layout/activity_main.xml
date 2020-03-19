@@ -10,17 +10,22 @@
     <TextView
         style="@style/homepageButtons"
         android:text="Students"
-
+        android:id="@+id/homepage_student"
+        android:onClick="showStudentList"
         />
 
     <TextView
         style="@style/homepageButtons"
         android:text="Records"
+        android:id="@+id/homepage_records"
+        android:onClick="showRecordList"
         />
 
     <TextView
         style="@style/homepageButtons"
+        android:id="@+id/homepage_visualizer"
         android:text="Visualizer"
+        android:onClick="showVisualizer"
         />
 
 </LinearLayout>
