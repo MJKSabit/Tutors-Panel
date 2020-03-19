@@ -22,6 +22,7 @@
         android:layout_alignParentRight="true"
         android:text="+"
         android:id="@+id/student_list_template_button_id"
+        android:onClick="plusOnclick"
         />
 
 

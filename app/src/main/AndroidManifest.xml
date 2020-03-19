@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Visualizer"
-            android:label="Visualizer"></activity>
-        <activity android:name=".RecordList"
-            android:label="Record List"/>
+        <activity android:name=".AddRecord"></activity>
+        <activity
+            android:name=".Visualizer"
+            android:label="Visualizer" />
+        <activity
+            android:name=".RecordList"
+            android:label="Record List" />
         <activity
             android:name=".StudentList"
             android:label="Student List" />

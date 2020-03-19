@@ -32,7 +32,7 @@ public class StudentAdapter extends ArrayAdapter<Student> {
         name.setText(student.getId()+" "+student.getName());
 
         Button addRecord = (Button) convertView.findViewById(R.id.student_list_template_button_id);
-        addRecord.setTag(student.getId()+"");
+        addRecord.setTag(student.getId());
 
         return convertView;
     }
