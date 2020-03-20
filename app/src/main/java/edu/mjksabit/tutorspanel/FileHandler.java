@@ -21,7 +21,7 @@ public class FileHandler {
     public static void writeStudent(Student s) {
         try {
 
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(studentFileName, Context.MODE_PRIVATE));
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(studentFileName, Context.MODE_APPEND));
             outputStreamWriter.write(s.getId()+", "+s.getName()+"\n");
             outputStreamWriter.close();
         }
@@ -30,9 +30,9 @@ public class FileHandler {
         }
     }
 
-    private static Student readStudent() {
+    public static ArrayList<Student> readStudentsAll() {
 
-        Student ret = null;
+        ArrayList<Student> list = new ArrayList<>();
 
         try {
             InputStream inputStream = context.openFileInput(studentFileName);
@@ -44,7 +44,8 @@ public class FileHandler {
 
                 while ( (receiveString = bufferedReader.readLine()) != null ) {
                     String[] data = receiveString.split(", ");
-                    ret = new Student(Integer.parseInt(data[0]), data[1]);
+                    if(data.length<2) break;
+                    list.add(new Student(Integer.parseInt(data[0]), data[1]));
                 }
 
                 inputStream.close();
@@ -56,18 +57,8 @@ public class FileHandler {
             Log.e("login activity", "Can not read file: " + e.toString());
         }
 
-        return ret;
-    }
+        DataHandler.student_id = list.size();
 
-    public static void readStudentAll() {
-        Student student;
-        DataHandler.students.clear();
-
-        while ( (student = readStudent()) != null ) {
-            DataHandler.students.add(student);
-            DataHandler.studentDetails.put(student.getId(), student);
-        }
-
-        DataHandler.student_id = DataHandler.students.size();
+        return list;
     }
 }
