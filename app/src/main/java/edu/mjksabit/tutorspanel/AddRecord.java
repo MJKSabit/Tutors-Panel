@@ -19,8 +19,10 @@ public class AddRecord extends AppCompatActivity {
     public void addRecord(View view) {
         EditText details = (EditText) findViewById(R.id.add_record_details);
 
-
-        DataHandler.records.add(new Record(student.getId(), details.getText().toString()));
+        Record record = new Record(student.getId(), details.getText().toString());
+        FileHandler.writeRecord(record);
+        //Log.d("Record Writer Return", record.getWriter());
+        DataHandler.records.add(record);
 
         super.onBackPressed();
     }
