@@ -42,6 +42,7 @@ public class StudentList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FileHandler.readStudentAll();
         DataHandler.main(null);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
